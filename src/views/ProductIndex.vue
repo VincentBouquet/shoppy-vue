@@ -11,7 +11,10 @@
 
 <script>
 export default {
-name: "ProductIndex"
+name: "ProductIndex",
+  mounted() {
+    this.$store.dispatch("fetchProductList")
+  }
 }
 </script>
 

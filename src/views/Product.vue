@@ -7,10 +7,13 @@
       <h3>Prix: </h3><p>{{ product.price }}</p>
       <h3>Quantité en stock: </h3><p>{{ product.stock }}</p>
     </div>
+<!--    <button @click="addToCart" v-if="$store.state.token">Ajouter au panier</button>-->
   </div>
 </template>
 
 <script>
+import Axios from "axios";
+
 export default {
   name: "Product",
   computed: {
@@ -20,7 +23,13 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchProduct", this.$route.params.id)
-  }
+  },
+  /*methods: {
+    async addToCart() {
+      await Axios.put("http://localhost:8000/api/add-to-cart",{headers:
+            {'Authorization': this.$store.state.token}})
+    }
+  }*/
 }
 </script>
 

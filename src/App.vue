@@ -2,7 +2,9 @@
   <div id="app">
     <div id="nav">
       <home/>
-      <router-link :to="{name: 'ProductIndex'}">Liste des produits</router-link>
+      <router-link :to="{name: 'ProductIndex'}" v-if="$store.state.token">Liste des produits</router-link>
+      <a v-if="$store.state.token"> - </a>
+      <button @click="unlink" v-if="$store.state.token">Se déconnecter</button>
     </div>
     <router-view/>
   </div>
@@ -13,8 +15,11 @@ import Home from "@/views/Home";
 export default {
   name: "App",
   components: {Home},
-  mounted() {
-    this.$store.dispatch("fetchProductList")
+  methods: {
+    unlink() {
+      this.$store.commit("setToken", null)
+      this.$router.push({name: 'Login'})
+    }
   }
 }
 </script>
