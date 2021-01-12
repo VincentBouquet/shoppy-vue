@@ -45,6 +45,7 @@ export default {
       })
       /*console.log(response.data.token)*/
       this.$store.commit("setToken", response.data.token)
+      this.$store.commit('setUserLogin', this.email)
       await this.$router.push({name: 'ProductIndex'})
     }
   }

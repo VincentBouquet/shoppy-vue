@@ -5,6 +5,7 @@ import ProductIndex from "@/views/ProductIndex";
 import Product from "@/views/Product";
 import Register from "@/views/Register";
 import Login from "@/views/Login";
+import Cart from "@/views/Cart";
 
 Vue.use(VueRouter)
 

@@ -7,7 +7,7 @@
       <h3>Prix: </h3><p>{{ product.price }}</p>
       <h3>Quantité en stock: </h3><p>{{ product.stock }}</p>
     </div>
-<!--    <button @click="addToCart" v-if="$store.state.token">Ajouter au panier</button>-->
+    <button @click="addToCart" v-if="$store.state.token">Ajouter au panier</button>
   </div>
 </template>
 
@@ -23,13 +23,18 @@ export default {
   },
   mounted() {
     this.$store.dispatch("fetchProduct", this.$route.params.id)
+    /*console.log(this.$store.state.userLogin)
+    console.log(this.product.id)*/
   },
-  /*methods: {
+  methods: {
     async addToCart() {
-      await Axios.put("http://localhost:8000/api/add-to-cart",{headers:
+      await Axios.put("http://localhost:8000/api/add-to-cart",{
+        username: this.$store.state.userLogin,
+        product: this.product.id
+      },{headers:
             {'Authorization': this.$store.state.token}})
     }
-  }*/
+  }
 }
 </script>
 

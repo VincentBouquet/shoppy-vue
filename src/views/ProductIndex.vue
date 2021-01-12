@@ -6,6 +6,7 @@
   >
     <ul>{{ product.name }}</ul>
   </router-link>
+  <router-link :to="{name: 'Login'}" v-if="$store.state.token === null">Connectez vous</router-link>
 </div>
 </template>
 

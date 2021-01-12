@@ -4,6 +4,8 @@
       <home/>
       <router-link :to="{name: 'ProductIndex'}" v-if="$store.state.token">Liste des produits</router-link>
       <a v-if="$store.state.token"> - </a>
+      <router-link :to="{name: 'Cart'}" v-if="$store.state.token">Panier</router-link>
+      <a v-if="$store.state.token"> - </a>
       <button @click="unlink" v-if="$store.state.token">Se déconnecter</button>
     </div>
     <router-view/>

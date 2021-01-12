@@ -8,7 +8,9 @@ export default new Vuex.Store({
   state: {
     productList: [],
     product: null,
-    token: null
+    token: null,
+    userLogin: null,
+    cart: []
   },
   getters: {
     getProductId(state){
@@ -28,6 +30,12 @@ export default new Vuex.Store({
       } else {
         state.token = null
       }
+    },
+    setCart(state, cartToSave){
+      state.cart = cartToSave
+    },
+    setUserLogin(state,loginToSave){
+      state.userLogin = loginToSave
     }
   },
   actions: {
@@ -42,8 +50,12 @@ export default new Vuex.Store({
             {'Authorization': context.state.token}});
       const product = response.data
       context.commit("setProductDetail", product)
+    },
+    async fetchCart(context){
+      const response = await Axios.get("http://localhost:8000/api/get-cart",{headers:
+            {'Authorization': context.state.token}});
+      const cart = response.data
+      context.commit("setCart", cart)
     }
-  },
-  modules: {
   }
 })
